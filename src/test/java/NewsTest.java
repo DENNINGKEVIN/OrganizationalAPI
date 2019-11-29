@@ -15,10 +15,10 @@ public class NewsTest {
     }
     //helper
     public News setUpNews(){
-        return new News("Kevo",1);
+        return new News("Animations is corrupt","Anonymous",1,1);
     }
     public News setUpNews1(){
-        return new News("Drakos",2);
+        return new News("Whoever wrote that post...nkt ","Mouse",9,2);
     }
 
     @Test
@@ -28,15 +28,15 @@ public class NewsTest {
     }
 
     @Test
-    public void getName_instanciatesWithName_true(){
+    public void getName_instanciatesWithContent_true(){
         News testNews=setUpNews();
-        assertEquals("Kevo",testNews.getName());
+        assertEquals("Animations is corrupt",testNews.getContent());
     }
     @Test
-    public void setName_setAName_true(){
+    public void setContent_setAContent_true(){
         News testNews=setUpNews();
-        testNews.setName("Doremy");
-        assertEquals("Doremy",testNews.getName());
+        testNews.setContent("Whoever wrote that post...nkt ");
+        assertEquals("Whoever wrote that post...nkt ",testNews.getContent());
     }
     @Test
     public void setId_setAnId_true(){
@@ -45,17 +45,16 @@ public class NewsTest {
         assertEquals(4,testNews.getId());
     }
 
-
     @Test
-    public void getDepartmentId_instanciatesWithDepartmentId_true(){
+    public void getUserId_instanciatesWithUserId_true(){
         News testNews=setUpNews();
-        assertEquals(1,testNews.getDepartmentid());
+        assertEquals(1,testNews.getUserId());
     }
     @Test
-    public void setDepartmentId_true(){
+    public void setUserId_true(){
         News testNews=setUpNews();
-        testNews.setDepartmentid(4);
-        assertEquals(4,testNews.getDepartmentid());
+        testNews.setUserId(5);
+        assertEquals(5,testNews.getUserId());
     }
 
 
