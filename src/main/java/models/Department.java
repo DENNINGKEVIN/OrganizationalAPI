@@ -2,11 +2,11 @@ package models;
 
 import java.util.Objects;
 
-public class Departments {
+public class Department {
     private String name;
     private int id;
 
-    public Departments(String name){
+    public Department(String name){
         this.name=name;
     }
 
@@ -30,7 +30,7 @@ public class Departments {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Departments that = (Departments) o;
+        Department that = (Department) o;
         return id == that.id &&
                 Objects.equals(name, that.name);
     }
