@@ -4,6 +4,8 @@ import java.util.Objects;
 
 public class User {
     private String name;
+    private String Companyposition;
+    private String role;
     private int id;
     private int departmentid;
 
@@ -36,6 +38,22 @@ public class User {
         this.departmentid = departmentid;
     }
 
+    public String getCompanyposition() {
+        return Companyposition;
+    }
+
+    public void setCompanyposition(String companyposition) {
+        Companyposition = companyposition;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -43,11 +61,13 @@ public class User {
         User user = (User) o;
         return id == user.id &&
                 departmentid == user.departmentid &&
-                Objects.equals(name, user.name);
+                Objects.equals(name, user.name) &&
+                Objects.equals(Companyposition, user.Companyposition) &&
+                Objects.equals(role, user.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, id, departmentid);
+        return Objects.hash(name, Companyposition, role, id, departmentid);
     }
 }
