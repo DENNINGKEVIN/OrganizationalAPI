@@ -38,6 +38,18 @@ public class NewsTest {
         testNews.setContent("Whoever wrote that post...nkt ");
         assertEquals("Whoever wrote that post...nkt ",testNews.getContent());
     }
+
+    @Test
+    public void getAuthor_instanciatesWithAuthor_true(){
+        News testNews=setUpNews();
+        assertEquals("Anonymous",testNews.getAuthor());
+    }
+    @Test
+    public void setAuthor_setAnAuthor_true(){
+        News testNews=setUpNews();
+        testNews.setAuthor("Fisi");
+        assertEquals("Fisi",testNews.getAuthor());
+    }
     @Test
     public void setId_setAnId_true(){
         News testNews=setUpNews();
@@ -56,6 +68,18 @@ public class NewsTest {
         testNews.setUserId(5);
         assertEquals(5,testNews.getUserId());
     }
+    @Test
+    public void getRating_instanciatesRating_true(){
+        News testNews=setUpNews();
+        assertEquals(1,testNews.getRating());
+    }
+    @Test
+    public void setRating_true(){
+        News testNews=setUpNews();
+        testNews.setRating(5);
+        assertEquals(5,testNews.getRating());
+    }
+
 
 
 }
