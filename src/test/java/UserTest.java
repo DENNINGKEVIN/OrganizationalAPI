@@ -40,12 +40,12 @@ public class UserTest {
         assertEquals("Doremy",testUser.getName());
     }
     @Test
-    public void getCompanyPosition_instanciatesWithCompanyPosition_true(){
+    public void getcompanyposition_instanciatesWithcompanyposition_true(){
         User testUser=setUpUser();
         assertEquals("Director",testUser.getCompanyposition());
     }
     @Test
-    public void setCompanyPosition_setCompanyPosition_true(){
+    public void setcompanyposition_setcompanyposition_true(){
         User testUser=setUpUser();
         testUser.setCompanyposition("Super-Director");
         assertEquals("Super-Director",testUser.getCompanyposition());

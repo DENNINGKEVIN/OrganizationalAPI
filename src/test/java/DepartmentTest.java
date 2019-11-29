@@ -16,7 +16,7 @@ public class DepartmentTest {
     }
 //helper
     public Department setUpDepartment(){
-        return new Department("Animations");
+        return new Department("Animations","Where animations come to life");
     }
 
     @Test
@@ -35,6 +35,17 @@ public class DepartmentTest {
         Department testDepartment=setUpDepartment();
         testDepartment.setName("Dundaing");
         assertEquals("Dundaing",testDepartment.getName());
+    }
+    @Test
+    public void getDescription_instanciatesWithDescription_true(){
+        Department testDepartment=setUpDepartment();
+        assertEquals("Where animations come to life",testDepartment.getDescription());
+    }
+    @Test
+    public void setDescription_setADescription_true(){
+        Department testDepartment=setUpDepartment();
+        testDepartment.setDescription("Where Animations are made");
+        assertEquals("Where Animations are made",testDepartment.getDescription());
     }
     @Test
     public void setId_setAnId_true(){

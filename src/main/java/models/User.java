@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class User {
     private String name;
-    private String Companyposition;
+    private String companyposition;
     private String role;
     private int id;
     private int departmentid;
@@ -12,7 +12,7 @@ public class User {
     public User(String name,int departmentid,String companyposition,String role){
         this.name=name;
         this.departmentid=departmentid;
-        this.Companyposition=companyposition;
+        this.companyposition=companyposition;
         this.role=role;
     }
 
@@ -41,11 +41,11 @@ public class User {
     }
 
     public String getCompanyposition() {
-        return Companyposition;
+        return companyposition;
     }
 
     public void setCompanyposition(String companyposition) {
-        Companyposition = companyposition;
+        this.companyposition = companyposition;
     }
 
     public String getRole() {
@@ -64,12 +64,12 @@ public class User {
         return id == user.id &&
                 departmentid == user.departmentid &&
                 Objects.equals(name, user.name) &&
-                Objects.equals(Companyposition, user.Companyposition) &&
+                Objects.equals(companyposition, user.companyposition) &&
                 Objects.equals(role, user.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, Companyposition, role, id, departmentid);
+        return Objects.hash(name, companyposition, role, id, departmentid);
     }
 }
