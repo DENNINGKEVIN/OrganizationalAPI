@@ -9,9 +9,11 @@ public class User {
     private int id;
     private int departmentid;
 
-    public User(String name,int departmentid){
+    public User(String name,int departmentid,String companyposition,String role){
         this.name=name;
         this.departmentid=departmentid;
+        this.Companyposition=companyposition;
+        this.role=role;
     }
 
     public String getName() {

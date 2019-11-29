@@ -16,10 +16,10 @@ public class UserTest {
     }
     //helper
     public User setUpUser(){
-        return new User("Kevo",1);
+        return new User("Kevo",1,"Director","Overseer");
     }
     public User setUpUser1(){
-        return new User("Drakos",2);
+        return new User("Drakos",2,"Employee","Work hard");
     }
 
     @Test
@@ -40,12 +40,33 @@ public class UserTest {
         assertEquals("Doremy",testUser.getName());
     }
     @Test
+    public void getCompanyPosition_instanciatesWithCompanyPosition_true(){
+        User testUser=setUpUser();
+        assertEquals("Director",testUser.getCompanyposition());
+    }
+    @Test
+    public void setCompanyPosition_setCompanyPosition_true(){
+        User testUser=setUpUser();
+        testUser.setCompanyposition("Super-Director");
+        assertEquals("Super-Director",testUser.getCompanyposition());
+    }
+    @Test
+    public void getRole_instanciatesWithRole_true(){
+        User testUser=setUpUser();
+        assertEquals("Overseer",testUser.getRole());
+    }
+    @Test
+    public void setRole_setARole_true(){
+        User testUser=setUpUser();
+        testUser.setRole("Super-Overseer");
+        assertEquals("Super-Overseer",testUser.getRole());
+    }
+    @Test
     public void setId_setAnId_true(){
         User testUser=setUpUser();
         testUser.setId(4);
         assertEquals(4,testUser.getId());
     }
-
 
     @Test
     public void getDepartmentId_instanciatesWithDepartmentId_true(){
