@@ -18,6 +18,9 @@ public class UserTest {
     public User setUpUser(){
         return new User("Kevo",1);
     }
+    public User setUpUser1(){
+        return new User("Drakos",2);
+    }
 
     @Test
     public void instanciatesCorrectly_true(){
@@ -55,6 +58,7 @@ public class UserTest {
         testUser.setDepartmentid(4);
         assertEquals(4,testUser.getDepartmentid());
     }
+
 
 
 }
