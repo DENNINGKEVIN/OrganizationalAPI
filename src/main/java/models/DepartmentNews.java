@@ -7,11 +7,10 @@ public class DepartmentNews extends News{
     private int departmentid;
     private static final String DATABASE_TYPE="DepartmentNews";
 
-    public DepartmentNews(String content,String author,int rating,int userId,int departmentid){
+    public DepartmentNews(String content,String author,int userid,int departmentid){
         this.content=content;
         this.author=author;
-        this.rating=rating;
-        this.userId=userId;
+        this.userid=userid;
         this.departmentid=departmentid;
     }
     public String getContent() {
@@ -30,20 +29,12 @@ public class DepartmentNews extends News{
         this.author = author;
     }
 
-    public int getRating() {
-        return rating;
+    public int getUserid() {
+        return userid;
     }
 
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUserid(int userid) {
+        this.userid = userid;
     }
 
     public int getId() {

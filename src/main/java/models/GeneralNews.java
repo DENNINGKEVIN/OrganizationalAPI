@@ -4,11 +4,10 @@ public class GeneralNews extends News{
 
     public static final String DATABASE_TYPE= "GeneralNews";
 
-    public GeneralNews(String content,String author,int rating,int userId){
+    public GeneralNews(String content,String author,int userid){
         this.content=content;
         this.author=author;
-        this.rating=rating;
-        this.userId=userId;
+        this.userid=userid;
 //        type=DATABASE_TYPE;
     }
     public String getContent() {
@@ -27,21 +26,14 @@ public class GeneralNews extends News{
         this.author = author;
     }
 
-    public int getRating() {
-        return rating;
+    public int getUserid() {
+        return userid;
     }
 
-    public void setRating(int rating) {
-        this.rating = rating;
+    public void setUserid(int userid) {
+        this.userid = userid;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
 
     public int getId() {
         return id;

@@ -16,10 +16,10 @@ public class GeneralNewsTest {
     }
     //helper
     public GeneralNews setUpGeneralNews(){
-        return new GeneralNews("Animations is corrupt","Anonymous",1,1);
+        return new GeneralNews("Animations is corrupt","Anonymous",5);
     }
     public GeneralNews setUpGeneralNews1(){
-        return new GeneralNews("Whoever wrote that post...nkt ","Mouse",9,2);
+        return new GeneralNews("Whoever wrote that post...nkt ","Mouse",9);
     }
 
     @Test
@@ -61,25 +61,15 @@ public class GeneralNewsTest {
     @Test
     public void getUserId_instanciatesWithUserId_true(){
         GeneralNews testGeneralNews=setUpGeneralNews();
-        assertEquals(1,testGeneralNews.getUserId());
+        assertEquals(5,testGeneralNews.getUserid());
     }
     @Test
     public void setUserId_true(){
         GeneralNews testGeneralNews=setUpGeneralNews();
-        testGeneralNews.setUserId(5);
-        assertEquals(5,testGeneralNews.getUserId());
+        testGeneralNews.setUserid(6);
+        assertEquals(6,testGeneralNews.getUserid());
     }
-    @Test
-    public void getRating_instanciatesRating_true(){
-        GeneralNews testGeneralNews=setUpGeneralNews();
-        assertEquals(1,testGeneralNews.getRating());
-    }
-    @Test
-    public void setRating_true(){
-        GeneralNews testGeneralNews=setUpGeneralNews();
-        testGeneralNews.setRating(5);
-        assertEquals(5,testGeneralNews.getRating());
-    }
+
 
 
 

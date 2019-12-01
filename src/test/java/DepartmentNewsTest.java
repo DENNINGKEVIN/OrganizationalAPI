@@ -16,10 +16,10 @@ public class DepartmentNewsTest {
     }
     //helper
     public DepartmentNews setUpDepartmentNews(){
-        return new DepartmentNews("Animations is corrupt","Anonymous",1,1,1);
+        return new DepartmentNews("Animations is corrupt","Anonymous",1,1);
     }
     public DepartmentNews setUpDepartmentNews1(){
-        return new DepartmentNews("Whoever wrote that post...nkt ","Mouse",9,2,1);
+        return new DepartmentNews("Whoever wrote that post...nkt ","Mouse",9,2);
     }
 
     @Test
@@ -61,25 +61,15 @@ public class DepartmentNewsTest {
     @Test
     public void getUserId_instanciatesWithUserId_true(){
         DepartmentNews testDepartmentNews=setUpDepartmentNews();
-        assertEquals(1,testDepartmentNews.getUserId());
+        assertEquals(1,testDepartmentNews.getUserid());
     }
     @Test
     public void setUserId_true(){
         DepartmentNews testDepartmentNews=setUpDepartmentNews();
-        testDepartmentNews.setUserId(5);
-        assertEquals(5,testDepartmentNews.getUserId());
+        testDepartmentNews.setUserid(5);
+        assertEquals(5,testDepartmentNews.getUserid());
     }
-    @Test
-    public void getRating_instanciatesRating_true(){
-        DepartmentNews testDepartmentNews=setUpDepartmentNews();
-        assertEquals(1,testDepartmentNews.getRating());
-    }
-    @Test
-    public void setRating_true(){
-        DepartmentNews testDepartmentNews=setUpDepartmentNews();
-        testDepartmentNews.setRating(5);
-        assertEquals(5,testDepartmentNews.getRating());
-    }
+
     @Test
     public void getDepartmentId_instanciatesDepartmentId_true(){
         DepartmentNews testDepartmentNews=setUpDepartmentNews();
