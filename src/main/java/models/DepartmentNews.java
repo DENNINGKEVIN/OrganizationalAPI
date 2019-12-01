@@ -9,7 +9,6 @@ public class DepartmentNews extends News{
 
     public DepartmentNews(String content,String author,int userid,int departmentid){
         this.content=content;
-        this.author=author;
         this.userid=userid;
         this.departmentid=departmentid;
         type = DATABASE_TYPE;
@@ -20,14 +19,6 @@ public class DepartmentNews extends News{
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
     }
 
     public int getUserid() {
@@ -54,7 +45,7 @@ public class DepartmentNews extends News{
 
     public String getType() { return type; }
 
-    public void setType(String type) { this.type = type;}
+    public void setType(String type) { type = DATABASE_TYPE;}
 
     @Override
     public boolean equals(Object o) {

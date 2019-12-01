@@ -6,7 +6,6 @@ public class GeneralNews extends News{
 
     public GeneralNews(String content,String author,int userid){
         this.content=content;
-        this.author=author;
         this.userid=userid;
         type=DATABASE_TYPE;
     }
@@ -18,19 +17,13 @@ public class GeneralNews extends News{
         this.content = content;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
     public int getUserid() {return userid; }
 
     public void setUserid(int userid) { this.userid = userid; }
 
     public String getType() { return type; }
+
+    public void setType(String type) { type = DATABASE_TYPE;}
 
     public int getId() {
         return id;

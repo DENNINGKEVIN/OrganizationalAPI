@@ -2,7 +2,6 @@ package models;
 
 public abstract class News {
     public String content;
-    public String author;
     public int userid;
     public int id;
     public String type;

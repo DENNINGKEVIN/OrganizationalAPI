@@ -41,17 +41,6 @@ public class GeneralNewsTest {
     }
 
     @Test
-    public void getAuthor_instanciatesWithAuthor_true(){
-        GeneralNews testGeneralNews=setUpGeneralNews();
-        assertEquals("Anonymous",testGeneralNews.getAuthor());
-    }
-    @Test
-    public void setAuthor_setAnAuthor_true(){
-        GeneralNews testGeneralNews=setUpGeneralNews();
-        testGeneralNews.setAuthor("Fisi");
-        assertEquals("Fisi",testGeneralNews.getAuthor());
-    }
-    @Test
     public void setId_setAnId_true(){
         GeneralNews testGeneralNews=setUpGeneralNews();
         testGeneralNews.setId(4);
@@ -77,7 +66,7 @@ public class GeneralNewsTest {
     @Test
     public void setType_setAType_true(){
         GeneralNews testGeneralNews=setUpGeneralNews();
-        testGeneralNews.setAuthor("cowish");
+        testGeneralNews.setType("cowish");
         assertEquals("general",testGeneralNews.getType());
     }
 

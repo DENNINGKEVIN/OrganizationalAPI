@@ -41,17 +41,6 @@ public class DepartmentNewsTest {
     }
 
     @Test
-    public void getAuthor_instanciatesWithAuthor_true(){
-        DepartmentNews testDepartmentNews=setUpDepartmentNews();
-        assertEquals("Anonymous",testDepartmentNews.getAuthor());
-    }
-    @Test
-    public void setAuthor_setAnAuthor_true(){
-        DepartmentNews testDepartmentNews=setUpDepartmentNews();
-        testDepartmentNews.setAuthor("Fisi");
-        assertEquals("Fisi",testDepartmentNews.getAuthor());
-    }
-    @Test
     public void setId_setAnId_true(){
         DepartmentNews testDepartmentNews=setUpDepartmentNews();
         testDepartmentNews.setId(4);
@@ -89,7 +78,7 @@ public class DepartmentNewsTest {
     @Test
     public void setType_setAType_true(){
         DepartmentNews testDepartmentNews=setUpDepartmentNews();
-        testDepartmentNews.setAuthor("Fisi");
+        testDepartmentNews.setType("Fisi");
         assertEquals("department",testDepartmentNews.getType());
     }
 
