@@ -2,13 +2,13 @@ package models;
 
 public class GeneralNews extends News{
 
-    public static final String DATABASE_TYPE= "GeneralNews";
+    public static final String DATABASE_TYPE= "general";
 
     public GeneralNews(String content,String author,int userid){
         this.content=content;
         this.author=author;
         this.userid=userid;
-//        type=DATABASE_TYPE;
+        type=DATABASE_TYPE;
     }
     public String getContent() {
         return content;
@@ -26,14 +26,11 @@ public class GeneralNews extends News{
         this.author = author;
     }
 
-    public int getUserid() {
-        return userid;
-    }
+    public int getUserid() {return userid; }
 
-    public void setUserid(int userid) {
-        this.userid = userid;
-    }
+    public void setUserid(int userid) { this.userid = userid; }
 
+    public String getType() { return type; }
 
     public int getId() {
         return id;

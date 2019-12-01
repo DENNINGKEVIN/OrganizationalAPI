@@ -5,6 +5,7 @@ public abstract class News {
     public String author;
     public int userid;
     public int id;
+    public String type;
 
 //    public News(String content,String author,int rating,int userId){
 //        this.content=content;
@@ -44,6 +45,7 @@ public abstract class News {
 //    public void setId(int id) {
 //        this.id = id;
 //    }
+
 
 
 

@@ -81,6 +81,17 @@ public class DepartmentNewsTest {
         testDepartmentNews.setDepartmentid(5);
         assertEquals(5,testDepartmentNews.getDepartmentid());
     }
+    @Test
+    public void getType_instanciatesWithType_true(){
+        DepartmentNews testDepartmentNews=setUpDepartmentNews();
+        assertEquals("department",testDepartmentNews.getType());
+    }
+    @Test
+    public void setType_setAType_true(){
+        DepartmentNews testDepartmentNews=setUpDepartmentNews();
+        testDepartmentNews.setAuthor("Fisi");
+        assertEquals("department",testDepartmentNews.getType());
+    }
 
 
 

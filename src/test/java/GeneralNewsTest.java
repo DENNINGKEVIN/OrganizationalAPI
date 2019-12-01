@@ -69,6 +69,17 @@ public class GeneralNewsTest {
         testGeneralNews.setUserid(6);
         assertEquals(6,testGeneralNews.getUserid());
     }
+    @Test
+    public void getType_instanciatesWithType_true(){
+        GeneralNews testGeneralNews=setUpGeneralNews();
+        assertEquals("general",testGeneralNews.getType());
+    }
+    @Test
+    public void setType_setAType_true(){
+        GeneralNews testGeneralNews=setUpGeneralNews();
+        testGeneralNews.setAuthor("cowish");
+        assertEquals("general",testGeneralNews.getType());
+    }
 
 
 
