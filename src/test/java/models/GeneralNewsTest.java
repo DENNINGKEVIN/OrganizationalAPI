@@ -1,3 +1,5 @@
+package models;
+
 import models.GeneralNews;
 import models.News;
 import org.junit.After;

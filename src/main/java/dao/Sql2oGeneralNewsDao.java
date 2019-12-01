@@ -56,7 +56,7 @@ public class Sql2oGeneralNewsDao implements GeneralNewsDao{
     }
     @Override
     public void deleteAll(){
-        String sql="DELETE * FROM news WHERE type='general'";
+        String sql="DELETE FROM news WHERE type='general'";
         try(Connection con=sql2o.open()){
             con.createQuery(sql)
                     .executeUpdate();

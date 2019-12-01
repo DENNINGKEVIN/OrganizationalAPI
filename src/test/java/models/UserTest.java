@@ -1,3 +1,5 @@
+package models;
+
 import models.Department;
 import models.User;
 import org.junit.After;

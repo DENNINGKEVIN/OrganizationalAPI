@@ -87,7 +87,7 @@ public class Sql2oUserDao implements UserDao {
     @Override
     public void deleteAll(){
         try(Connection con=sql2o.open()){
-            con.createQuery("DELETE * FROM users")
+            con.createQuery("DELETE FROM users")
                     .executeUpdate();
         }
     }

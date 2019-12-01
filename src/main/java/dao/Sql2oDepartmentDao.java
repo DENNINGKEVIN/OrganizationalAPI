@@ -89,7 +89,7 @@ public class Sql2oDepartmentDao implements DepartmentDao{
     @Override
     public void deleteAll(){
         try(Connection con=sql2o.open()){
-            con.createQuery("DELETE * FROM departments")
+            con.createQuery("DELETE FROM departments")
                     .executeUpdate();
         }
     }

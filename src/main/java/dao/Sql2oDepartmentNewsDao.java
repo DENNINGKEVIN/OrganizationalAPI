@@ -56,7 +56,7 @@ public class Sql2oDepartmentNewsDao implements DepartmentNewsDao{
     }
     @Override
     public void deleteAll(){
-        String sql="DELETE * FROM news WHERE type='department'";
+        String sql="DELETE FROM news WHERE type='department'";
         try(Connection con=sql2o.open()){
             con.createQuery(sql)
                     .executeUpdate();
