@@ -1,19 +1,16 @@
 package models;
 
-public abstract class News {
-    public String content;
-    public String author;
-    public int rating;
-    public int userId;
-    public int id;
+public class GeneralNews extends News{
 
-//    public News(String content,String author,int rating,int userId){
-//        this.content=content;
-//        this.author=author;
-//        this.rating=rating;
-//        this.userId=userId;
-//    }
+    public static final String DATABASE_TYPE="GeneralNews";
 
+    public GeneralNews(String content,String author,int rating,int userId,int departmentid){
+        this.content=content;
+        this.author=author;
+        this.rating=rating;
+        this.userId=userId;
+        type=DATABASE_TYPE;
+    }
     public String getContent() {
         return content;
     }
@@ -54,4 +51,7 @@ public abstract class News {
         this.id = id;
     }
 
+    public static String getDatabaseType() {
+        return DATABASE_TYPE;
+    }
 }
