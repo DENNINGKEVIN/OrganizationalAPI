@@ -20,10 +20,11 @@ public class Sql2oGeneralNewsDao implements GeneralNewsDao{
     public void add(GeneralNews generalNews){
         String sql="INSERT INTO news (content , userid , type) VALUES (:content , :userid , :type)";
         try(Connection con=sql2o.open()){
-            con.createQuery(sql,true)
+            int id=(int) con.createQuery(sql,true)
                     .bind(generalNews)
                     .executeUpdate()
                     .getKey();
+            generalNews.setId(id);
         }catch (Sql2oException ex) {
             System.out.println(ex);
         }
@@ -43,6 +44,20 @@ public class Sql2oGeneralNewsDao implements GeneralNewsDao{
                     .executeAndFetchFirst(GeneralNews.class);
         }
     }
+//    @Override
+//    public void update(int id,String newContent,int newUserid){
+//        String sql="UPDATE news SET (content,userid) = (:content,:userid) WHERE type='general'";
+//        try(Connection con=sql2o.open()){
+//            con.createQuery(sql)
+//                    .addParameter("content", newContent)
+//                    .addParameter("userid", newUserid)
+//                    .addParameter("id",id)
+//                    .executeUpdate();
+//        } catch (Sql2oException ex) {
+//            System.out.println(ex);
+//        }
+//
+//    }
     @Override
     public void deleteById(int id){
         String sql="DELETE FROM news WHERE type='general' AND id = :id ";
@@ -54,9 +69,10 @@ public class Sql2oGeneralNewsDao implements GeneralNewsDao{
             System.out.println(ex);
         }
     }
+
     @Override
     public void deleteAll(){
-        String sql="DELETE FROM news WHERE type='general'";
+        String sql="DELETE FROM news WHERE type ='general'";
         try(Connection con=sql2o.open()){
             con.createQuery(sql)
                     .executeUpdate();

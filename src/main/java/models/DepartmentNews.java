@@ -3,11 +3,10 @@ package models;
 import java.util.Objects;
 
 public class DepartmentNews extends News{
-    private int id;
     private int departmentid;
     private static final String DATABASE_TYPE="department";
 
-    public DepartmentNews(String content,String author,int userid,int departmentid){
+    public DepartmentNews(String content,int userid,int departmentid){
         this.content=content;
         this.userid=userid;
         this.departmentid=departmentid;

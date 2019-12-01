@@ -20,10 +20,11 @@ public class Sql2oDepartmentNewsDao implements DepartmentNewsDao{
     public void add(DepartmentNews departmentNews){
         String sql="INSERT INTO news (content , userid , type) VALUES (:content , :userid , :type)";
         try(Connection con=sql2o.open()){
-            con.createQuery(sql,true)
+            int id=(int) con.createQuery(sql,true)
                     .bind(departmentNews)
                     .executeUpdate()
                     .getKey();
+            departmentNews.setId(id);
         }catch (Sql2oException ex) {
             System.out.println(ex);
         }
@@ -43,12 +44,27 @@ public class Sql2oDepartmentNewsDao implements DepartmentNewsDao{
                     .executeAndFetchFirst(DepartmentNews.class);
         }
     }
+//    @Override
+//    public void update(int id,String newContent,int newDepartmentid,int newUserid){
+//        String sql="UPDATE news SET (content,departmentid,userid) = (:content,:departmentid,:userid) WHERE type='department' AND id=:id";
+//        try(Connection con=sql2o.open()){
+//            con.createQuery(sql)
+//                    .addParameter("content", newContent)
+//                    .addParameter("departmentid",newDepartmentid)
+//                    .addParameter("userid", newUserid)
+//                    .addParameter("id",id)
+//                    .executeUpdate();
+//        } catch (Sql2oException ex) {
+//            System.out.println(ex);
+//        }
+//
+//    }
     @Override
     public void deleteById(int id){
-        String sql="DELETE FROM news WHERE type='department' AND id = :id ";
+        String sql="DELETE FROM news WHERE id = :id ";
         try(Connection con=sql2o.open()){
             con.createQuery(sql)
-                    .addParameter("id",id)
+                    .addParameter("id", id)
                     .executeUpdate();
         }catch (Sql2oException ex) {
             System.out.println(ex);

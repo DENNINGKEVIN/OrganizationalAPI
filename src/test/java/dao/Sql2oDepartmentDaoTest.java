@@ -35,8 +35,10 @@ public class Sql2oDepartmentDaoTest {
     @Test
     public void addedDepartmentsAreReturnedFromGetAll() throws Exception {
         Department testDepartment = setupNewDepartment();
+        Department testDepartment1=setupNewDepartment1();
         departmentDao.add(testDepartment);
-        assertEquals(1, departmentDao.getAll().size());
+        departmentDao.add(testDepartment1);
+        assertEquals(2, departmentDao.getAll().size());
     }
     @Test
     public void noFoodtypesReturnsEmptyList() throws Exception {
@@ -58,6 +60,15 @@ public class Sql2oDepartmentDaoTest {
         departmentDao.deleteAll();
         assertEquals(0,departmentDao.getAll().size());
 
+    }
+    @Test
+    public void update() throws Exception{
+        Department testDepartment=setupNewDepartment();
+        departmentDao.add(testDepartment);
+        departmentDao.update(testDepartment.getId(),"Ghosts","Was demolished");
+        Department foundDepartment=departmentDao.findById(testDepartment.getId());
+        assertEquals("Ghosts",foundDepartment.getName());
+        assertEquals("Was demolished",foundDepartment.getDescription());
     }
 
     //helpers

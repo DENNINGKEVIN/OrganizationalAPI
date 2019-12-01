@@ -4,7 +4,7 @@ public class GeneralNews extends News{
 
     public static final String DATABASE_TYPE= "general";
 
-    public GeneralNews(String content,String author,int userid){
+    public GeneralNews(String content,int userid){
         this.content=content;
         this.userid=userid;
         type=DATABASE_TYPE;

@@ -18,10 +18,10 @@ public class DepartmentNewsTest {
     }
     //helper
     public DepartmentNews setUpDepartmentNews(){
-        return new DepartmentNews("Animations is corrupt","Anonymous",1,1);
+        return new DepartmentNews("Animations is corrupt",1,1);
     }
     public DepartmentNews setUpDepartmentNews1(){
-        return new DepartmentNews("Whoever wrote that post...nkt ","Mouse",9,2);
+        return new DepartmentNews("Whoever wrote that post...nkt ",9,2);
     }
 
     @Test

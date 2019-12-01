@@ -74,6 +74,21 @@ public class Sql2oDepartmentDao implements DepartmentDao{
     }
 
     @Override
+    public void update(int id,String newName,String newDescription){
+        String sql="UPDATE departments SET (name, description) = (:name, :description) WHERE id = :id";
+        try(Connection con=sql2o.open()){
+            con.createQuery(sql)
+                    .addParameter("name" , newName)
+                    .addParameter("description" , newDescription)
+                    .addParameter("id" , id)
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+
+    }
+
+    @Override
     public void deleteById(int id){
         String sql="DELETE FROM departments WHERE id=:id";
         try(Connection con=sql2o.open()){

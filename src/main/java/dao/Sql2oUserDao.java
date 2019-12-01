@@ -16,7 +16,7 @@ public class Sql2oUserDao implements UserDao {
     }
     @Override
     public void add(User user){
-        String sql = "INSERT INTO user (name,companyposition,role,departmentid) VALUES (:name,:companyposition,:role,:departmentid)";
+        String sql = "INSERT INTO users (name,companyposition,role,departmentid) VALUES (:name,:companyposition,:role,:departmentid)";
         try (Connection con=sql2o.open()){
             int id=(int) con.createQuery(sql,true)
                     .bind(user)
@@ -69,6 +69,21 @@ public class Sql2oUserDao implements UserDao {
             System.out.println(ex);
         }
         return departmentNews;
+    }
+    @Override
+    public void update(int id,String newName,String newCompanyposition,String newRole,int newDepartmentid){
+        String sql="UPDATE users SET (name, companyposition, role, departmentid) = (:name, :companyposition, :role, :departmentid)";
+        try(Connection con=sql2o.open()){
+            con.createQuery(sql)
+                    .addParameter("name", newName)
+                    .addParameter("companyposition",newCompanyposition)
+                    .addParameter("role",newRole)
+                    .addParameter("departmentid",newDepartmentid)
+                    .addParameter("id",id)
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
     }
 
     @Override

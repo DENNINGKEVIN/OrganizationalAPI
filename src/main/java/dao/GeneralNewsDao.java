@@ -13,6 +13,7 @@ public interface GeneralNewsDao {
     GeneralNews findById(int id);
 
     //UPDATE
+//    void update (int id,String content,int userid);
 
     //DELETE
     void deleteById(int id);

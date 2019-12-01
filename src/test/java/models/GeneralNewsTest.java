@@ -18,10 +18,10 @@ public class GeneralNewsTest {
     }
     //helper
     public GeneralNews setUpGeneralNews(){
-        return new GeneralNews("Animations is corrupt","Anonymous",5);
+        return new GeneralNews("Animations is corrupt",5);
     }
     public GeneralNews setUpGeneralNews1(){
-        return new GeneralNews("Whoever wrote that post...nkt ","Mouse",9);
+        return new GeneralNews("Whoever wrote that post...nkt ",9);
     }
 
     @Test

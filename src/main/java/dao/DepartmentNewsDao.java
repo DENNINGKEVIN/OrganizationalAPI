@@ -14,6 +14,8 @@ public interface DepartmentNewsDao {
 
 
     //UPDATE
+//    void update (int id,String content,int userid,int departmentid);
+
 
     //DELETE
     void deleteById(int id);

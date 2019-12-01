@@ -15,6 +15,7 @@ public interface DepartmentDao {
     List<DepartmentNews> getAllDepartmentNewsForDepartment(int id);
 
     //UPDATE
+    void update(int id,String name,String description);
 
     //DELETE
     void deleteById(int id);

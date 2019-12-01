@@ -16,6 +16,7 @@ public interface UserDao {
     List<DepartmentNews> getAllDepartmentNewsForUser (int id);
 
     //UPDATE
+    void update(int id,String name,String companyposition,String role,int departmentid);
 
 
     //DELETE
