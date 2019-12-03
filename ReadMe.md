@@ -18,9 +18,9 @@ postman
 
 ## Paths
 
-*get
+
 | Path                           | Action                                           |
-| ---                             | ---                                             |
+| ---                            | ---                                              |
 | /users                         | Shows all users                                  |
 | /departments                   | shows all departments                            |
 | /generalnews                   | shows all general news                           |
@@ -30,7 +30,7 @@ postman
 | /users/department/:id          | shows all users in specific department           |
 | /departmentnews/department/:id | shows all departmentnews in specific department  |
 
-*post
+
 | Path                 | Action              |
 | ---                  | ---                 |
 | /departments/new     | Add department      |
@@ -38,7 +38,7 @@ postman
 | /generalnews/new     | Add generalnews     |
 | /departmentnews/new  | Add departmentnews  |
 
-##Live Link
+## Live Link
 
 
 ## Support and contact details
