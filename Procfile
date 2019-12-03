@@ -1,1 +1,1 @@
-web: ./build/install/spotter-reporter/bin/organizational-apiapi
+web: ./build/install/organizational-apiapi/bin/organizational-apiapi
