@@ -39,7 +39,7 @@ postman
 | /departmentnews/new  | Add departmentnews  |
 
 ## Live Link
-
+https://organizational-apiapi.herokuapp.com
 
 ## Support and contact details
 Contact +254791062106 for any questions concerning the app. Feel free to give your feedback too.
