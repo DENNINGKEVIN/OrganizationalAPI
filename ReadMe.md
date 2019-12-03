@@ -19,24 +19,24 @@ postman
 ## Paths
 
 *get
-| Path | Action |
-| ------------- | ------------- |
-| /users  | Shows all users  |
-| /departments  | shows all departments |
-| /generalnews  | shows all general news  |
-| /departmentnews  | hsows all department news  |
-| /departments/:id  | shows specific department  |
-| /users/:id  | shows specific user |
-| /users/department/:id  | shows all users in specific department  |
+| Path                           | Action                                           |
+| -------------                  | -------------                                    |
+| /users                         | Shows all users                                  |
+| /departments                   | shows all departments                            |
+| /generalnews                   | shows all general news                           |
+| /departmentnews                | shows all department news                        |
+| /departments/:id               | shows specific department                        |
+| /users/:id                     | shows specific user                              |
+| /users/department/:id          | shows all users in specific department           |
 | /departmentnews/department/:id | shows all departmentnews in specific department  |
 
 *post
-| Path | Action |
-| ------------------ | --------------- |
-| /departments/new  | Content Cell  |
-| /users/new | Content Cell  |
-| /generalnews/new | Content Cell  |
-| /departmentnews/new  | Content Cell  |
+| Path                 | Action              |
+| ------------------   | -------------       |
+| /departments/new     | Add department      |
+| /users/new           | add user            |
+| /generalnews/new     | Add generalnews     |
+| /departmentnews/new  | Add departmentnews  |
 
 ##Live Link
 
