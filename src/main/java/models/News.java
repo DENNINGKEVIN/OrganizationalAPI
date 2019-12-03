@@ -3,7 +3,7 @@ package models;
 public abstract class News {
     public String content;
     public int userid;
-    public int id;
+//    public int id;
     public String type;
 
 //    public News(String content,String author,int rating,int userId){

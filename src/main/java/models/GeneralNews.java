@@ -2,7 +2,8 @@ package models;
 
 public class GeneralNews extends News{
 
-    public static final String DATABASE_TYPE= "general";
+    private static final String DATABASE_TYPE= "general";
+    private int id;
 
     public GeneralNews(String content,int userid){
         this.content=content;

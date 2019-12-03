@@ -63,13 +63,13 @@ public class GeneralNewsTest {
     @Test
     public void getType_instanciatesWithType_true(){
         GeneralNews testGeneralNews=setUpGeneralNews();
-        assertEquals("general",testGeneralNews.getType());
+        assertEquals("general",testGeneralNews.getDatabaseType());
     }
     @Test
     public void setType_setAType_true(){
         GeneralNews testGeneralNews=setUpGeneralNews();
         testGeneralNews.setType("cowish");
-        assertEquals("general",testGeneralNews.getType());
+        assertEquals("general",testGeneralNews.getDatabaseType());
     }
 
 

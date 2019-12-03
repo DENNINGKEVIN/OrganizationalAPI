@@ -3,10 +3,8 @@ import dao.Sql2oDepartmentDao;
 import dao.Sql2oDepartmentNewsDao;
 import dao.Sql2oGeneralNewsDao;
 import dao.Sql2oUserDao;
-import models.Department;
-import models.DepartmentNews;
-import models.GeneralNews;
-import models.User;
+import exceptions.ApiException;
+import models.*;
 import org.sql2o.Sql2o;
 
 import java.sql.Connection;
@@ -33,6 +31,7 @@ public class App {
         generalNewsDao=new Sql2oGeneralNewsDao(sql2o);
         userDao=new Sql2oUserDao(sql2o);
 
+        //READ
         get("/departments", "application/json", (req, res) -> {
             System.out.println(departmentDao.getAll());
             if(departmentDao.getAll().size() > 0){
@@ -42,6 +41,15 @@ public class App {
                 return "{\"message\":\"Apologies , no departments are available.\"}";
             }
         });
+        get("/departments/:id", "application/json", (req, res) -> {
+            int idOfDepartmentToFind=Integer.parseInt(req.params("id"));
+            Department departmentToFind=departmentDao.findById(idOfDepartmentToFind);
+            if (departmentToFind == null){
+                throw new ApiException(404, String.format("No department with the id: \"%s\" exists", req.params("id")));
+            }
+            return gson.toJson(departmentToFind);
+        });
+
         get("/users", "application/json", (req, res) -> {
             System.out.println(userDao.getAll());
             if(userDao.getAll().size() > 0){
@@ -51,25 +59,58 @@ public class App {
                 return "{\"message\":\"Apologies , no users are available.\"}";
             }
         });
-        get("/generalnews", "application/json", (req, res) -> {
-            System.out.println(generalNewsDao.getAll());
-            if(generalNewsDao.getAll().size() > 0){
-                return gson.toJson(generalNewsDao.getAll());
+        get("/users/:id", "application/json", (req, res) -> {
+            int idOfUserToFind=Integer.parseInt(req.params("id"));
+            User userToFind=userDao.findById(idOfUserToFind);
+            if (userToFind == null){
+                throw new ApiException(404, String.format("No user with the id: \"%s\" exists", req.params("id")));
             }
-            else {
-                return "{\"message\":\"Apologies, no general news are available.\"}";
-            }
-        });
-        get("/departmentnews", "application/json", (req, res) -> {
-            System.out.println(generalNewsDao.getAll());
-            if(generalNewsDao.getAll().size() > 0){
-                return gson.toJson(generalNewsDao.getAll());
-            }
-            else {
-                return "{\"message\":\"Apologies , no departmental news are available.\"}";
-            }
+            return gson.toJson(userToFind);
         });
 
+        get("/generalnews", "application/json", (req, res) -> {
+            System.out.println(generalNewsDao.getAll());
+            System.out.println(GeneralNews.getDatabaseType());
+            int sizeNews = generalNewsDao.getAll().size();
+            if (sizeNews == 0){
+                throw new ApiException(404, String.format("No general news available"));
+        }
+                return gson.toJson(generalNewsDao.getAll());
+
+        });
+        get("/departmentnews", "application/json", (req, res) -> {
+            System.out.println(departmentNewsDao.getAll());
+            System.out.println(DepartmentNews.getDatabaseType());
+            int sizeNews = departmentNewsDao.getAll().size();
+            if (sizeNews == 0){
+                throw new ApiException(404, String.format("No departmental news available"));
+            }
+            return gson.toJson(departmentNewsDao.getAll());
+        });
+
+        get("/users/department/:id", "application/json", (req, res) -> {
+            int departmentId=Integer.parseInt(req.params("id"));
+//            System.out.println(departmentDao.getAllUsersByDepartment(departmentId));
+            System.out.println(departmentId);
+            int sizeUsers = departmentDao.getAllUsersByDepartment(departmentId).size();
+            if (sizeUsers == 0){
+                throw new ApiException(404, String.format("No users available in this department"));
+            }
+            return gson.toJson(departmentDao.getAllUsersByDepartment(departmentId));
+        });
+        get("/departmentnews/department/:id", "application/json", (req, res) -> {
+            int departmentId=Integer.parseInt(req.params("id"));
+            System.out.println(departmentDao.getAllDepartmentNewsForDepartment(departmentId));
+
+            int sizeNews = departmentDao.getAllDepartmentNewsForDepartment(departmentId).size();
+            if (sizeNews == 0){
+                throw new ApiException(404, String.format("No news available for this department"));
+            }
+            return gson.toJson(departmentDao.getAllDepartmentNewsForDepartment(departmentId));
+        });
+
+
+        //CREATE
         post("/departments/new", "application/json", (req, res) -> {
             Department department = gson.fromJson(req.body(), Department.class);
             departmentDao.add(department);
@@ -82,32 +123,45 @@ public class App {
             res.status(201);
             return gson.toJson(user);
         });
-        post("/users/:userId/generalnews/new", "application/json", (req, res) -> {
-            int userId = Integer.parseInt(req.params("userId"));
-            GeneralNews generalNews = gson.fromJson(req.body(), GeneralNews.class);
-//            generalNews.setCreatedat();
-//            generalNews.setFormattedCreatedAt();
-            generalNews.setUserid(userId); //we need to set this separately because it comes from our route, not our JSON input.
+        post("/generalnews/new", "application/json", (req, res) -> {
+            GeneralNews generalNews = gson.fromJson(req.body(), GeneralNews.class);//            ;
             generalNewsDao.add(generalNews);
             res.status(201);
             return gson.toJson(generalNews);
         });
-        post("/users/:userId/department/:departmentId/departmentnews/new", "application/json", (req, res) -> {
-            int userId = Integer.parseInt(req.params("userId"));
-            int departmentId = Integer.parseInt(req.params("departmentId"));
+        post("/departmentnews/new", "application/json", (req, res) -> {
             DepartmentNews departmentNews = gson.fromJson(req.body(), DepartmentNews.class);
+            System.out.println(departmentNews.getDepartmentid());
 //            departmentNews.setCreatedat(); //I am new!
 //            departmentNews.setFormattedCreatedAt();
-            departmentNews.setUserid(userId);
-            departmentNews.setDepartmentid(departmentId); //we need to set this separately because it comes from our route, not our JSON input.
             departmentNewsDao.add(departmentNews);
             res.status(201);
             return gson.toJson(departmentNews);
         });
+//        post("/departments/:departmentId/update", "application/json", (req, res) -> {
+//            int departmentId=Integer.parseInt(req.queryParams("departmentId"));
+//
+//            Department department = gson.fromJson(req.body(), Department.class);
+//            department.setId(departmentId);
+//            departmentDao.update();
+//            departmentDao.add(department);
+//            res.status(201);
+//            return gson.toJson(department);
+//        });
 
 
 
         //filters
+        exception(ApiException.class, (exception, req, res) -> {
+            ApiException err = exception;
+            Map<String, Object> jsonMap = new HashMap<>();
+            jsonMap.put("status", err.getStatusCode());
+            jsonMap.put("errorMessage", err.getMessage());
+            res.type("application/json");
+            res.status(err.getStatusCode());
+            res.body(gson.toJson(jsonMap));
+        });
+
         after((req, res) ->{
             res.type("application/json");
         });

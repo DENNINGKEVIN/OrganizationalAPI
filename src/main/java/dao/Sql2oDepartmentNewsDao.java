@@ -18,13 +18,14 @@ public class Sql2oDepartmentNewsDao implements DepartmentNewsDao{
 
     @Override
     public void add(DepartmentNews departmentNews){
-        String sql="INSERT INTO news (content , userid , type) VALUES (:content , :userid , :type)";
+        String sql="INSERT INTO news (content , userid , departmentid , type) VALUES (:content , :userid , :departmentid , :type)";
         try(Connection con=sql2o.open()){
             int id=(int) con.createQuery(sql,true)
                     .bind(departmentNews)
                     .executeUpdate()
                     .getKey();
             departmentNews.setId(id);
+            System.out.println(departmentNews.getDepartmentid());
         }catch (Sql2oException ex) {
             System.out.println(ex);
         }
@@ -32,14 +33,14 @@ public class Sql2oDepartmentNewsDao implements DepartmentNewsDao{
     @Override
     public List<DepartmentNews> getAll(){
         try(Connection con= sql2o.open()){
-            return con.createQuery("SELECT * FROM News WHERE type='department'")
+            return con.createQuery("SELECT * FROM News")
                     .executeAndFetch(DepartmentNews.class);
         }
     }
     @Override
     public DepartmentNews findById(int id){
         try(Connection con=sql2o.open()){
-            return con.createQuery("SELECT FROM news WHERE type='department' AND id = :id ")
+            return con.createQuery("SELECT * FROM news WHERE type='department' AND id = :id ")
                     .addParameter("id",id)
                     .executeAndFetchFirst(DepartmentNews.class);
         }

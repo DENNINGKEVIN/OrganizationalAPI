@@ -32,14 +32,14 @@ public class Sql2oGeneralNewsDao implements GeneralNewsDao{
     @Override
     public List<GeneralNews> getAll(){
         try(Connection con= sql2o.open()){
-            return con.createQuery("SELECT * FROM News WHERE type='general'")
+            return con.createQuery("SELECT * FROM news WHERE type='general' ")
                     .executeAndFetch(GeneralNews.class);
         }
     }
     @Override
     public GeneralNews findById(int id){
         try(Connection con=sql2o.open()){
-            return con.createQuery("SELECT FROM news WHERE type='general' AND id = :id ")
+            return con.createQuery("SELECT * FROM news id = :id ")
                     .addParameter("id",id)
                     .executeAndFetchFirst(GeneralNews.class);
         }
@@ -60,7 +60,7 @@ public class Sql2oGeneralNewsDao implements GeneralNewsDao{
 //    }
     @Override
     public void deleteById(int id){
-        String sql="DELETE FROM news WHERE type='general' AND id = :id ";
+        String sql="DELETE FROM news WHERE id = :id ";
         try(Connection con=sql2o.open()){
             con.createQuery(sql)
                     .addParameter("id",id)
@@ -72,7 +72,7 @@ public class Sql2oGeneralNewsDao implements GeneralNewsDao{
 
     @Override
     public void deleteAll(){
-        String sql="DELETE FROM news WHERE type ='general'";
+        String sql="DELETE FROM news";
         try(Connection con=sql2o.open()){
             con.createQuery(sql)
                     .executeUpdate();

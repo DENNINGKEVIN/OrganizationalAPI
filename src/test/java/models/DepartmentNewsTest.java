@@ -75,13 +75,13 @@ public class DepartmentNewsTest {
     @Test
     public void getType_instanciatesWithType_true(){
         DepartmentNews testDepartmentNews=setUpDepartmentNews();
-        assertEquals("department",testDepartmentNews.getType());
+        assertEquals("department",testDepartmentNews.getDatabaseType());
     }
     @Test
     public void setType_setAType_true(){
         DepartmentNews testDepartmentNews=setUpDepartmentNews();
         testDepartmentNews.setType("Fisi");
-        assertEquals("department",testDepartmentNews.getType());
+        assertEquals("department",testDepartmentNews.getDatabaseType());
     }
 
 
