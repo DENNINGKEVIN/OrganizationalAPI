@@ -10,6 +10,7 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
@@ -21,3 +22,6 @@ dependencies {
     compile group: 'org.postgresql', name: 'postgresql', version: '9.3-1100-jdbc4' // ADD ME FOR POSTGRES VERSION 9.x
     compile group: 'org.postgresql', name: 'postgresql', version: '42.2.2' // ADD ME FOR POSTGRES VERSION 10.x
 }
+applicationName = "organizational-apiapi"
+mainClassName = 'App'
+task stage(dependsOn: ['clean', 'installDist'])

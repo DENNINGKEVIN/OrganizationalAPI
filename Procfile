@@ -1,0 +1,1 @@
+web: ./build/install/spotter-reporter/bin/organizational-apiapi
