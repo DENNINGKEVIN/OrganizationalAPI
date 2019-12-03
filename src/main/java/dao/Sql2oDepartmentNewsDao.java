@@ -33,7 +33,7 @@ public class Sql2oDepartmentNewsDao implements DepartmentNewsDao{
     @Override
     public List<DepartmentNews> getAll(){
         try(Connection con= sql2o.open()){
-            return con.createQuery("SELECT * FROM News")
+            return con.createQuery("SELECT * FROM News WHERE type='department'")
                     .executeAndFetch(DepartmentNews.class);
         }
     }

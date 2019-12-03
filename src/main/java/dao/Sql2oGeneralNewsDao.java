@@ -33,6 +33,7 @@ public class Sql2oGeneralNewsDao implements GeneralNewsDao{
     public List<GeneralNews> getAll(){
         try(Connection con= sql2o.open()){
             return con.createQuery("SELECT * FROM news WHERE type='general' ")
+                    .throwOnMappingFailure(false)
                     .executeAndFetch(GeneralNews.class);
         }
     }

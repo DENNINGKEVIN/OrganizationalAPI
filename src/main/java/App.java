@@ -1,15 +1,11 @@
 import com.google.gson.Gson;
-import dao.Sql2oDepartmentDao;
-import dao.Sql2oDepartmentNewsDao;
-import dao.Sql2oGeneralNewsDao;
-import dao.Sql2oUserDao;
+import dao.*;
 import exceptions.ApiException;
 import models.*;
 import org.sql2o.Sql2o;
 
 import java.sql.Connection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static spark.Spark.*;
@@ -23,8 +19,7 @@ public class App {
         Gson gson=new Gson();
 
         staticFileLocation("/public");
-        String connectionString = "jdbc:h2:~/jadle.db;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
-        Sql2o sql2o = new Sql2o(connectionString, "", "");
+        Sql2o sql2o = DB.sql2o;
 
         departmentDao=new Sql2oDepartmentDao(sql2o);
         departmentNewsDao=new Sql2oDepartmentNewsDao(sql2o);
@@ -69,8 +64,7 @@ public class App {
         });
 
         get("/generalnews", "application/json", (req, res) -> {
-            System.out.println(generalNewsDao.getAll());
-            System.out.println(GeneralNews.getDatabaseType());
+
             int sizeNews = generalNewsDao.getAll().size();
             if (sizeNews == 0){
                 throw new ApiException(404, String.format("No general news available"));
@@ -129,26 +123,14 @@ public class App {
             res.status(201);
             return gson.toJson(generalNews);
         });
+
         post("/departmentnews/new", "application/json", (req, res) -> {
             DepartmentNews departmentNews = gson.fromJson(req.body(), DepartmentNews.class);
             System.out.println(departmentNews.getDepartmentid());
-//            departmentNews.setCreatedat(); //I am new!
-//            departmentNews.setFormattedCreatedAt();
             departmentNewsDao.add(departmentNews);
             res.status(201);
             return gson.toJson(departmentNews);
         });
-//        post("/departments/:departmentId/update", "application/json", (req, res) -> {
-//            int departmentId=Integer.parseInt(req.queryParams("departmentId"));
-//
-//            Department department = gson.fromJson(req.body(), Department.class);
-//            department.setId(departmentId);
-//            departmentDao.update();
-//            departmentDao.add(department);
-//            res.status(201);
-//            return gson.toJson(department);
-//        });
-
 
 
         //filters

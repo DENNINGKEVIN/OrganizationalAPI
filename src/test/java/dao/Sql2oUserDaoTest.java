@@ -1,9 +1,7 @@
 package dao;
 
 import models.User;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
@@ -11,19 +9,26 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 public class Sql2oUserDaoTest {
-    private Sql2oUserDao userDao;
-    private Connection conn;
+    private static Sql2oUserDao userDao;
+    private static Connection conn;
 
-    @Before
-    public void setUp() throws Exception{
-        String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
-        Sql2o sql2o = new Sql2o(connectionString, "", "");
-        userDao=new Sql2oUserDao(sql2o);
-        conn = sql2o.open();
+    @BeforeClass
+    public static void setUp() throws Exception{
+//        String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
+
+        userDao=new Sql2oUserDao(DB.sql2o);
+        conn = DB.sql2o.open();
     }
     @After
     public void tearDown() throws Exception {
-        conn.close();
+        System.out.println("clearing database");
+        userDao.deleteAll();
+    }
+
+    @AfterClass
+    public static void shutDown() throws Exception { //changed to static
+        conn.close(); // close connection once after this entire test file is finished
+        System.out.println("connection closed");
     }
     @Test
     public void addingUserSetsId() throws Exception {

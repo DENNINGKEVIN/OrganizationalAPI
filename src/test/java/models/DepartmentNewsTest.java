@@ -11,6 +11,7 @@ import static org.junit.Assert.assertEquals;
 public class DepartmentNewsTest {
     @Before
     public void setUp() throws Exception {
+
     }
 
     @After
