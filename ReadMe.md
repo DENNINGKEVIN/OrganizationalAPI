@@ -20,7 +20,7 @@ postman
 
 *get
 | Path                           | Action                                           |
-| -------------                  | -------------                                    |
+| ---                             | ---                                             |
 | /users                         | Shows all users                                  |
 | /departments                   | shows all departments                            |
 | /generalnews                   | shows all general news                           |
@@ -32,7 +32,7 @@ postman
 
 *post
 | Path                 | Action              |
-| ------------------   | -------------       |
+| ---                  | ---                 |
 | /departments/new     | Add department      |
 | /users/new           | add user            |
 | /generalnews/new     | Add generalnews     |
