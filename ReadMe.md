@@ -9,7 +9,7 @@ This is an API designed to allow users various abilities ie view users ,departme
 ## Setup/Installation Requirements
 * To use this project, clone it.
 * Make sure java, gradle, heroku,postman extension and postgresql is installed
-* Navigate to src/main/java/resources/db and run in terminal psql < create.sql
+* Navigate to src/main/java/resources/db and run in terminal psql < create.sql(creates required database with required tables)
 * Test links in App in postman.
 ## Technologies Used
 Java
@@ -17,8 +17,30 @@ Heroku
 Postgresql
 postman
 
-##Live Link
+## Paths
 
+
+| Path                           | Action                                           |
+| ---                            | ---                                              |
+| /users                         | Shows all users                                  |
+| /departments                   | shows all departments                            |
+| /generalnews                   | shows all general news                           |
+| /departmentnews                | shows all department news                        |
+| /departments/:id               | shows specific department                        |
+| /users/:id                     | shows specific user                              |
+| /users/department/:id          | shows all users in specific department           |
+| /departmentnews/department/:id | shows all departmentnews in specific department  |
+
+
+| Path                 | Action              |
+| ---                  | ---                 |
+| /departments/new     | Add department      |
+| /users/new           | add user            |
+| /generalnews/new     | Add generalnews     |
+| /departmentnews/new  | Add departmentnews  |
+
+## Live Link
+https://organizational-apiapi.herokuapp.com
 
 ## Support and contact details
 Contact +254791062106 for any questions concerning the app. Feel free to give your feedback too.
