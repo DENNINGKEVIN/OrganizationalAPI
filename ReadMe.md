@@ -1,4 +1,5 @@
 # ORGANIZATIONAL API
+[![CircleCI](https://circleci.com/gh/DENNINGKEVIN/OrganizationalAPI.svg?style=svg)](https://circleci.com/gh/DENNINGKEVIN/OrganizationalAPI)
 #### An API for viewing news and departments.
 #### By **Denning Kevin Mulama**
 
